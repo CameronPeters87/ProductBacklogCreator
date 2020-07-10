@@ -1,0 +1,23 @@
+﻿@model IEnumerable<ProductBacklogForProjects.Models.ViewModels.ProjectThumbnailAreaModel>
+
+@{
+    ViewBag.Title = "ProjectsIndex2";
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="headline">
+        <h2>My Projects</h2>
+    </div>
+    <div class="create-btn">
+        <a class="btn btn-sm btn-primary" href="/Home/CreateProject">
+            <span class="fa fa-plus"></span>
+            Create new Project
+        </a>
+    </div>
+    foreach (var area in Model)
+    {
+        <div class="row">
+            @Html.Partial("_ThumbnailAreaPartial", area)
+        </div>
+    }
+}

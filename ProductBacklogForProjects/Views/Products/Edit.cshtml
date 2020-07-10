@@ -1,0 +1,84 @@
+﻿@model ProductBacklogForProjects.Models.ViewModels.ProductModel
+@using ProductBacklogForProjects.Extensions
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>ProductModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Subjects, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.SubjectId,
+                    Model.Subjects.ToSelectListItem(Model.SubjectId)
+               , new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Goal, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Goal, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Goal, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Goal, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Benefit, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Benefit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Benefit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Priorities, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.PriorityId,
+                    Model.Priorities.ToSelectListItem(Model.PriorityId),
+                    new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PriorityId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sprint, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sprint, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sprint, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Statuses, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.StatusId,
+                    Model.Statuses.ToSelectListItem(Model.StatusId),
+                    new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StatusId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a class="btn btn-sm btn-primary" href="/Products/ProductBacklog/@Model.ProjectId">
+        <span class="glyphicon glyphicon-arrow-left"></span>
+        Back to List
+</div>

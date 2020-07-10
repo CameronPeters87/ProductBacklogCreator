@@ -1,0 +1,14 @@
+﻿.headline {
+    width: 20%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.create-btn {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    outline-color: grey;
+}

@@ -1,0 +1,115 @@
+﻿@model ProductBacklogForProjects.Models.ViewModels.ProjectProductsViewModel
+@using ProductBacklogForProjects.Extensions
+
+<br />
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>
+            <strong>Add Product</strong>
+        </h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Subjects, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.SubjectId,
+                    Model.Subjects.ToSelectListItem(Model.SubjectId)
+               , new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Goal, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Goal, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Goal, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Goal, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Benefit, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Benefit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Benefit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Priorities, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.PriorityId,
+                    Model.Priorities.ToSelectListItem(Model.PriorityId),
+                    new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PriorityId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sprint, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sprint, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sprint, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Statuses, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.StatusId,
+                    Model.Statuses.ToSelectListItem(Model.StatusId),
+                    new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StatusId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<hr />
+<h2>ProductBacklog for @Model.ProjectName</h2>
+<br />
+<table class="table table-striped table-condensed">
+    <tr class="success">
+        <th>As a</th>
+        <th>I want to</th>
+        <th>So that I</th>
+        <th>Sprint</th>
+        <th>Priority</th>
+        <th>Status
+        <th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model.ProductModels)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.SubjectName) </td>
+            <td>@Html.DisplayFor(modelItem => item.Goal) </td>
+            <td>@Html.DisplayFor(modelItem => item.Benefit) </td>
+            <td>@Html.DisplayFor(modelItem => item.Sprint) </td>
+            <td>@Html.DisplayFor(modelItem => item.PriorityName) </td>
+            <td>@Html.DisplayFor(modelItem => item.StatusName) </td>
+            <td>
+                <a type="button" class="btn btn-primary btn-sm"
+                   href="@Url.Action("EditProduct")?projectId=@item.ProjectId&productId=@item.Id">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+                <a type="button" class="btn btn-danger btn-sm"
+                   href="@Url.Action("RemoveProduct")?projectId=@item.ProjectId&productId=@item.Id">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </a>
+
+            </td>
+        </tr>
+    }
+</table>
