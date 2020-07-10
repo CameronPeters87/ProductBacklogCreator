@@ -15,6 +15,9 @@ using ProductBacklogForProjects.Models.ViewModels;
 using System.Web.UI.WebControls;
 using ProductBacklogForProjects.Helper;
 using System.IO;
+using NPOI.SS.Formula.Functions;
+using FluentNHibernate.Automapping;
+using AutoMapper;
 
 namespace ProductBacklogForProjects.Controllers
 {
@@ -135,6 +138,79 @@ namespace ProductBacklogForProjects.Controllers
             catch { }
             return Redirect("/Products/AddProductUser?projectId=" + model.ProjectId);
         }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<ActionResult> EditProductUser(int projectId, int productId)
+        {
+            List<Product> products = await db.Products.Where(p => p.ProjectId.Equals(projectId)
+                && p.Id.Equals(productId)).ToListAsync();
+
+            var statuses = await db.Statuses.ToListAsync();
+            var priorities = await db.Priorities.ToListAsync();
+            var subjects = await db.Subjects.Where(s => s.ProjectId.Equals(projectId))
+                .ToListAsync();
+
+            var productModel = (from p in products
+                                      join pro in db.Projects on p.ProjectId equals pro.Id
+                                      join s in db.Subjects on p.SubjectId equals s.Id
+                                      join st in db.Statuses on p.StatusId equals st.Id
+                                      join pr in db.Priorities on p.PriorityId equals pr.Id
+                                      select new ProductCreateViewModel
+                                      {
+                                          ProductId = productId,
+                                          Subjects = subjects,
+                                          Goal = p.Goal,
+                                          Benefit = p.Benefit,
+                                          Priorities = priorities,
+                                          Sprint = p.Sprint,
+                                          Statuses = statuses,
+                                          StatusId = p.StatusId,
+                                          ProjectId = projectId,
+                                          PriorityId = p.PriorityId,
+                                          SubjectId = p.SubjectId,
+                                          SubjectName = s.Name
+                                      }).FirstOrDefault();
+            return View(productModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditProduct(ProductCreateViewModel model)
+        {
+            try
+            {
+                if (model == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                if (ModelState.IsValid)
+                {
+                    var db = new ApplicationDbContext();
+                    Product product = await db.Products.Where(
+                        p => p.ProjectId.Equals(model.ProjectId)
+                            && p.Id.Equals(model.ProductId)).FirstOrDefaultAsync();
+
+                    product.Id = model.ProductId;
+                    product.PriorityId = model.PriorityId;
+                    product.ProjectId = model.ProjectId;
+                    product.SubjectId = model.SubjectId;
+                    product.StatusId = model.StatusId;
+                    product.Benefit = model.Benefit;
+                    product.Goal = model.Goal;
+                    product.Sprint = model.Sprint;
+
+                    db.Entry(product).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+
+                }
+            }
+            catch { }
+
+
+            return Redirect("/Products/ProductBacklog/" + model.ProjectId);
+        }
+
         public async Task<ActionResult> RemoveUser(ProductCreateViewModel model)
         {
             try
@@ -153,23 +229,6 @@ namespace ProductBacklogForProjects.Controllers
             }
             catch { }
             return Redirect("/Products/AddProductUser?projectId=" + model.ProjectId);
-        }
-
-        // GET: Products/Edit/5
-        public async Task<ActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = await db.Products.FindAsync(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-
-
-            return View(product);
         }
 
         // POST: Products/Edit/5

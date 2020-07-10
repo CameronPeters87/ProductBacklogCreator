@@ -22,7 +22,7 @@ namespace ProductBacklogForProjects.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("BacklogDB", throwIfV1Schema: false)
         {
         }
 
