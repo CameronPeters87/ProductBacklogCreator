@@ -6,31 +6,23 @@
 
 <h2>ProductBacklog for @Model.ProjectName</h2>
 
-@*<a class="btn btn-sm btn-primary"
-       href="@Html.Action("AddProductUser",
-            new { projectId = Model.ProjectId })">
-        <span class="fa fa-plus"></span>
-    </a>*@
-@*@Html.ActionLink("Add product", "AddProductUser", new { projectId = Model.ProjectId }) <br />
-@Html.ActionLink("Download Products List XLS file", "DownloadXls", 
-    new { projectId = Model.ProjectId }))*@
-
-<div>
+<div class="test">
     <a type="button" class="btn btn-primary"
        href="@Url.Action("AddProductUser")?projectId=@Model.ProjectId">
         <span class="fa fa-plus"></span>
     </a>
-    <a type="button" class="btn btn-info"
+
+    <a  class="pull-right"
        href="@Url.Action("DownloadXls")?projectId=@Model.ProjectId">
-        <span class="fa fa-cloud-download"></span>
+        <span class="fa fa-download fa-2x" style="color:darkslategrey"></span>
     </a>
+
 </div>
 
 <br />
 
-
 <table class="table table-striped table-condensed">
-    <tr class="bg-success">
+    <tr>
         <th>As a</th>
         <th>I want to</th>
         <th>So that I</th>
