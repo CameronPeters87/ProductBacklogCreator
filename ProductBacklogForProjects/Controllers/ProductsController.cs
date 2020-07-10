@@ -12,6 +12,9 @@ using ProductBacklogForProjects.Models;
 using ProductBacklogForProjects.Extensions;
 using System.Security.Cryptography;
 using ProductBacklogForProjects.Models.ViewModels;
+using System.Web.UI.WebControls;
+using ProductBacklogForProjects.Helper;
+using System.IO;
 
 namespace ProductBacklogForProjects.Controllers
 {
@@ -203,20 +206,6 @@ namespace ProductBacklogForProjects.Controllers
             var model = new ProductViewClass();
             return View(product);
         }
-        //public async Task<ActionResult> Delete(int projectId, int productId)
-        //{
-        //    if (projectId == null || productId <= 0)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Product product = await db.Products.FindAsync(id);
-        //    if (product == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    var model = new ProductViewClass();
-        //    return View(product);
-        //}
 
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -257,7 +246,45 @@ namespace ProductBacklogForProjects.Controllers
             return Redirect("/Products/ProductBacklog/" + projectId);
         }
 
+        [HttpGet]
+        public async Task<ActionResult> DownloadXls(int projectId)
+        {
+            var excelHelper = new ExcelHelper();
+
+            var productExcelModel = new ProductExcelModel();
+            var products = await (from p in db.Products
+                                  where p.ProjectId == projectId
+                                  select p).ToListAsync();
+
+            productExcelModel.ProductExcels = await products.ConvertExcel(db);
+
+            try
+            {
+                //Only export 3 columns
+               var properties = excelHelper.GetProperties(typeof(ProductExcelView),
+                   new string[] { "Subject", "Goal", "Benefit", "Priority",
+                        "Sprint", "Status" });
+
+                //            var properties = excelHelper.GetProperties(typeof(Product),
+                //new string[] { "Id", "SubjectId", "Goal", "Benefit", "PriorityId",
+                //                    "Sprint", "StatusId", "ProjectId" });
 
 
+                var workbook = excelHelper.CreateXls<ProductExcelView>
+                    (productExcelModel.ProductExcels, properties);
+
+                var memoryStream = new MemoryStream();
+
+                workbook.Write(memoryStream);
+
+                return File(memoryStream.ToArray(), "application/vnd.ms-excel", "ProductBacklog.xls");
+            }
+            catch (Exception ex)
+            {
+                TempData["Message"] = "Oops! Something went wrong.";
+
+                return RedirectToAction("Error");
+            }
+        }
     }
 }
