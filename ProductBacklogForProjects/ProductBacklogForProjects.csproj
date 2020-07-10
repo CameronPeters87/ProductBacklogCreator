@@ -442,12 +442,6 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Desktop\ProductBacklogCreator\Entities\ProductBacklogForProjects.Entities.csproj">
-      <Project>{D1995B84-8D73-405C-B9FD-C5307D9B872D}</Project>
-      <Name>ProductBacklogForProjects.Entities</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>

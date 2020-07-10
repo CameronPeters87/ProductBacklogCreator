@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductBacklogForProjects", "ProductBacklogForProjects\ProductBacklogForProjects.csproj", "{C6BF2DDA-911F-41CB-986B-DCD3230C86B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductBacklogForProjects.Entities", "..\..\..\Desktop\ProductBacklogCreator\Entities\ProductBacklogForProjects.Entities.csproj", "{D1995B84-8D73-405C-B9FD-C5307D9B872D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{C6BF2DDA-911F-41CB-986B-DCD3230C86B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6BF2DDA-911F-41CB-986B-DCD3230C86B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6BF2DDA-911F-41CB-986B-DCD3230C86B1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D1995B84-8D73-405C-B9FD-C5307D9B872D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1995B84-8D73-405C-B9FD-C5307D9B872D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1995B84-8D73-405C-B9FD-C5307D9B872D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D1995B84-8D73-405C-B9FD-C5307D9B872D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
