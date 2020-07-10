@@ -111,8 +111,9 @@ namespace ProductBacklogForProjects.Controllers
             {
 
             }
-
             return Redirect("/Products/ProductBacklog/" + model.ProjectId);
+
+            //return RedirectToAction("AddProductUser", model.ProjectId);
         }
 
         [HttpPost]
@@ -229,25 +230,6 @@ namespace ProductBacklogForProjects.Controllers
             }
             catch { }
             return Redirect("/Products/AddProductUser?projectId=" + model.ProjectId);
-        }
-
-        // POST: Products/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,SubjectId,Goal,Benefit,PriorityId,Sprint,StatusId,ProjectId")] Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(product).State = EntityState.Modified;
-
-                //product.ProjectId = _tempProjectId;
-
-                await db.SaveChangesAsync();
-                return RedirectToAction("ProductBacklog/");
-            }
-            return View(product);
         }
 
         // GET: Products/Delete/5

@@ -5,8 +5,6 @@
     ViewBag.Title = "AddProduct";
 }
 
-@*<h1 class="align-items-center">Product</h1>*@
-
 <div class="row">
     <div class="col-md-6">
         <h2>Add Product</h2>
@@ -22,8 +20,8 @@
                     @Html.LabelFor(model => model.Subjects, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.DropDownListFor(model => model.SubjectId,
-                            Model.Subjects.ToSelectListItem(Model.SubjectId)
-                       , new { htmlAttributes = new { @class = "form-control" } })
+         Model.Subjects.ToSelectListItem(Model.SubjectId)
+    , new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Goal, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -47,8 +45,8 @@
                     @Html.LabelFor(model => model.Priorities, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.DropDownListFor(model => model.PriorityId,
-                            Model.Priorities.ToSelectListItem(Model.PriorityId),
-                            new { htmlAttributes = new { @class = "form-control" } })
+         Model.Priorities.ToSelectListItem(Model.PriorityId),
+         new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.PriorityId, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -56,7 +54,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Sprint, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Sprint, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Sprint, new { htmlAttributes = new { @Value = "1" } })
                         @Html.ValidationMessageFor(model => model.Sprint, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -145,3 +143,6 @@
     <span class="fa fa-arrow-left"></span>
     Back to list
 </a>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

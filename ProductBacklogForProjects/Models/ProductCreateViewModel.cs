@@ -3,6 +3,7 @@ using ProductBacklogForProjects.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -21,6 +22,8 @@ namespace ProductBacklogForProjects.Models
         public string Benefit { get; set; }
         [DisplayName("Priority")]
         public ICollection<Priority> Priorities { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Only positive number allowed")]
+        [Required]
         public int Sprint { get; set; }
         [DisplayName("Status")]
         public ICollection<Status> Statuses { get; set; }
