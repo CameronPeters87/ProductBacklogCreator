@@ -169,11 +169,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\PrioritiesController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ProjectsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\StatusController.cs" />
-    <Compile Include="Areas\Admin\Controllers\SubjectsController.cs" />
     <Compile Include="Comparer\ProductEqualityComparer.cs" />
     <Compile Include="Comparer\ProjectEqualityComparer.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -221,30 +216,6 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Projects\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Projects\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Projects\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Projects\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Projects\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Status\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Status\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Status\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Status\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Status\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Subjects\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Subjects\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Subjects\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Subjects\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Subjects\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Priorities\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Priorities\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Priorities\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Priorities\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Priorities\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout - Backup.cshtml" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -419,8 +390,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Model\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
