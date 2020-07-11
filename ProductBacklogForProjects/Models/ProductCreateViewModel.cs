@@ -24,7 +24,7 @@ namespace ProductBacklogForProjects.Models
         public ICollection<Priority> Priorities { get; set; }
         [Range(1, int.MaxValue, ErrorMessage = "Only positive number allowed")]
         [Required]
-        public int Sprint { get; set; }
+        public int Sprint { get; set; } = 1;
         [DisplayName("Status")]
         public ICollection<Status> Statuses { get; set; }
         [DisplayName("Project")]
