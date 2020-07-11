@@ -1,0 +1,8 @@
+﻿.loginbox {
+    box-shadow: 0 0 5px black;
+    margin-left: 200px;
+    margin-right: 200px;
+    text-align: -webkit-center;
+    padding-bottom: 20px;
+    padding-top: 10px;
+}

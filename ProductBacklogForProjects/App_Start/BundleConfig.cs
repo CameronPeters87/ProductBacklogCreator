@@ -27,6 +27,8 @@ namespace ProductBacklogForProjects
                       "~/Content/site.css"));
             bundles.Add(new StyleBundle("~/Content/thumbnail").Include(
                 "~/Content/thumbnail.css"));
+            bundles.Add(new StyleBundle("~/Content/login").Include(
+                "~/Content/login.css"));
         }
     }
 }
