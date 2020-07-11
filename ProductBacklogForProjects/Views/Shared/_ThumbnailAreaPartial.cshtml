@@ -18,6 +18,17 @@
                 </div>
                 <div class="card-footer">
                     <a href="@thumb.Link" class="btn btn-info btn-sm">View Product Backlog</a>
+                    <div class="crud">
+                        <a type="button" class="btn btn-sm btn-primary"
+                           href="@Url.Action("EditProject")?projectId=@thumb.Id">
+                            <span class="fa fa-pencil"></span>
+                        </a>
+                        <a type="button" class="btn btn-sm btn-danger"
+                           href="@Url.Action("DeleteProject")?projectId=@thumb.Id">
+                            <span class="fa fa-trash"></span>
+                        </a>
+
+                    </div>
                 </div>
             </div>
         </div>
