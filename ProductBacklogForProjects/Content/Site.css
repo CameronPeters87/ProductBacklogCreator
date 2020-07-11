@@ -23,3 +23,6 @@ textarea {
     max-width: 280px;
 }
 
+.navbar-brand {
+    font-family: 'Merienda One', cursive;
+}
