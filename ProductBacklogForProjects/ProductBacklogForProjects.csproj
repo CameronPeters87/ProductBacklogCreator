@@ -269,6 +269,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\footer.css" />
     <Content Include="Content\images\bg-01.jpg" />
     <Content Include="Content\images\icons\favicon.ico" />
     <Content Include="Content\images\icons\icon-google.png" />

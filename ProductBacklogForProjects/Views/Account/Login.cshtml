@@ -5,9 +5,8 @@
 }
 
 <div class="loginbox">
-    <h2>@ViewBag.Title.</h2>
-
-    <div class="">
+    <div class="formbox">
+        <h2>@ViewBag.Title.</h2>
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
@@ -45,7 +44,7 @@
                         </button>
                         <hr />
                         <a type="button" class="btn btn-primary btn-block"
-                           href="#">
+                           href="@Url.Action("Register", "Account")">
                             <span class="fa fa-user-plus" style="color:white"></span>
                             Register as new user
                         </a>
@@ -53,9 +52,9 @@
                     </div>
                 </div>
                 @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
+                <p>
+                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                </p>*@
             }
         </section>
     </div>

@@ -3,6 +3,10 @@
     margin-left: 200px;
     margin-right: 200px;
     text-align: -webkit-center;
-    padding-bottom: 20px;
+}
+
+.formbox {
+    background-color: white;
     padding-top: 10px;
+    padding-bottom: 10px;
 }
