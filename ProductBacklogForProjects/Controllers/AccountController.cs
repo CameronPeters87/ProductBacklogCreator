@@ -391,9 +391,18 @@ namespace ProductBacklogForProjects.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            //return RedirectToAction("Index", "Home");
-            return Redirect("/Account/Login?ReturnUrl=%2F");
+            if (User.IsInRole("Admin"))
+            {
+                AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                //return RedirectToAction("Index", "Home");
+                return Redirect("/Account/Login");
+            }
+            else
+            {
+                AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                //return RedirectToAction("Index", "Home");
+                return Redirect("/Account/Login");
+            }
         }
 
         //

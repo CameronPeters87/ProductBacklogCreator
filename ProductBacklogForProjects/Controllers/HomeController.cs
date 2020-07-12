@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using NHibernate.Criterion;
 using ProductBacklogForProjects.Entities;
 using ProductBacklogForProjects.Extensions;
 using ProductBacklogForProjects.Models;
@@ -38,22 +39,28 @@ namespace ProductBacklogForProjects.Controllers
         [Authorize]
         public async Task<ActionResult> ProjectsMain()
         {
-            var userId = User.Identity.GetUserId();
-            var projects = await new List<ProjectModel>().GetProjectsAsync(userId);
-            var count = projects.Count() / 4;
-
-            var model = new List<ProjectThumbnailAreaModel>();
-
-            for (int i = 0; i <= count; i++)
+            if (User.IsInRole("Admin"))
             {
-                model.Add(new ProjectThumbnailAreaModel
-                {
-                    Title = i.Equals(0) ? "My Projects" : null,
-                    Projects = projects.Skip(i * 3).Take(3)
-                });
+                return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
             }
+            else
+            {
+                var userId = User.Identity.GetUserId();
+                var projects = await new List<ProjectModel>().GetProjectsAsync(userId);
+                var count = projects.Count() / 4;
 
-            return View(model);
+                var model = new List<ProjectThumbnailAreaModel>();
+
+                for (int i = 0; i <= count; i++)
+                {
+                    model.Add(new ProjectThumbnailAreaModel
+                    {
+                        Title = i.Equals(0) ? "My Projects" : null,
+                        Projects = projects.Skip(i * 3).Take(3)
+                    });
+                }
+                return View(model);
+            }
         }
 
         [Authorize]
