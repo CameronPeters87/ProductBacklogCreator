@@ -59,6 +59,9 @@
     <Reference Include="ClosedXML, Version=0.95.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ClosedXML.0.95.3\lib\net46\ClosedXML.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
       <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
@@ -226,6 +229,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PrioritiesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StatusController.cs" />
+    <Compile Include="Areas\Admin\Model\Point.cs" />
     <Compile Include="Comparer\ProductEqualityComparer.cs" />
     <Compile Include="Comparer\ProjectEqualityComparer.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -281,10 +287,10 @@
     <Content Include="Content\login.css" />
     <Content Include="Content\TempContent\css\sb-admin-2.css" />
     <Content Include="Content\TempContent\css\sb-admin-2.min.css" />
+    <Content Include="Content\TempContent\css\sidebar.css" />
     <Content Include="Content\TempContent\img\undraw_posting_photo.svg" />
     <Content Include="Content\TempContent\js\demo\chart-area-demo.js" />
     <Content Include="Content\TempContent\js\demo\chart-bar-demo.js" />
-    <Content Include="Content\TempContent\js\demo\chart-line.js" />
     <Content Include="Content\TempContent\js\demo\chart-pie-demo.js" />
     <Content Include="Content\TempContent\js\demo\datatables-demo.js" />
     <Content Include="Content\TempContent\js\sb-admin-2.js" />
@@ -2131,6 +2137,16 @@
     <Content Include="Content\TempContent\vendor\jquery\jquery.min.map" />
     <Content Include="Content\TempContent\vendor\jquery\jquery.slim.min.map" />
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Priorities\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Priorities\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Priorities\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Priorities\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Priorities\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Status\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Status\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Status\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Status\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Status\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
